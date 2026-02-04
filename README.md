@@ -20,6 +20,19 @@ This project compares classic classifiers (k-nearest neighbors, logistic regress
 - Threshold trade-offs aligned to business value (profit vs call cost).
 - Cumulative gains and lift-by-decile for campaign targeting efficiency.
 
+**Executive Summary**
+- The CRISP-DM paper reports **17 campaigns (May 2008–Nov 2010)** with **79,354 contacts** and an **~8%** success rate, making class imbalance a central modeling challenge.
+- Using a non-leaky feature set (excluding `duration` and handling `pdays=999`), cross-validation shows meaningful differences in PR-AUC/ROC-AUC across models.
+- Test-set evaluation confirms that accuracy alone is misleading; **PR-AUC, recall, and balanced accuracy** better reflect campaign effectiveness.
+- Business-driven thresholding identifies a decision cutoff that maximizes expected profit rather than raw accuracy.
+- Lift-by-decile analysis shows that prioritizing top-scored clients concentrates conversions and improves ROI.
+
+**Model Comparison**
+- Models compared: Logistic Regression, KNN, Decision Tree, and Linear SVM.
+- Metrics: Accuracy, Balanced Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, plus mean fit time.
+- The comparison table is generated in `notebooks/classifier-comparison.ipynb` and highlights the best value per metric.
+- Supporting plots are saved in `images/` (ROC/PR curves, gains, threshold trade-offs, lift by decile).
+
 **Quick Start**
 1. Install dependencies: `pip install -r requirements.txt`
 2. Run the notebook: `jupyter notebook notebooks/classifier-comparison.ipynb`
